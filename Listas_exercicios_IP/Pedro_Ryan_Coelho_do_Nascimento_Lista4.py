@@ -248,8 +248,6 @@ for i in range(inicio, fim + 1):
     print(f"{numero} x {i} = {numero * i}")
 
 # ======================== Questão 18 ========================
-# 24h do jogo = 1h real → cada minuto do jogo = 2,5s reais
-# Sem time.sleep, apenas exibimos todas as horas e minutos do dia
 
 print("Relógio do IF Life (24h do jogo):")
 
