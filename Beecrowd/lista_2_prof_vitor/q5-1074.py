@@ -10,12 +10,12 @@ for i in range(n):
             tipo = "EVEN"
         else:
             tipo = "ODD"
-             
+
         if k > 0:
-            sinal = "POSITIVE" 
+            sinal = "POSITIVE"
         else:
             sinal = "NEGATIVE"
         respostas.append(f"{tipo} {sinal}")
-        
+
 for resposta in respostas:
     print(resposta)
