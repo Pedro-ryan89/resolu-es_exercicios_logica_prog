@@ -1,0 +1,34 @@
+[tool.ruff]
+line-length = 80
+indent-width = 4
+target-version = "py314"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "B",
+    "UP",
+    "SIM",
+    "C4",
+    "RET",
+    "ARG",
+    "PIE",
+    "PTH",
+    "RUF",
+
+    "PLR0913",
+    "PLR0917",
+]
+
+ignore = []
+
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"

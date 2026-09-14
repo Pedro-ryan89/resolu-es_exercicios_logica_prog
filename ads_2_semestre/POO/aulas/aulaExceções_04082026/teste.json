@@ -1,0 +1,51 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Pedro",
+      "idade": 21,
+      "ativo": true,
+      "email": "pedro@email.com",
+      "cursos": [
+        "Python",
+        "Java",
+        "Banco de Dados"
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Ana",
+      "idade": 19,
+      "ativo": true,
+      "email": "ana@email.com",
+      "cursos": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Carlos",
+      "idade": 25,
+      "ativo": false,
+      "email": "carlos@email.com",
+      "cursos": [
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Marina",
+      "idade": 22,
+      "ativo": true,
+      "email": "marina@email.com",
+      "cursos": [
+        "Java",
+        "Spring Boot",
+        "PostgreSQL"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+    {
+        "nome": "Tecnologia em Análise e Desenvolvimento de Sistemas",
+        "abreviação": "ADS",
+        "semestres": [2]
+    },
+    {
+        "nome": "Técninco Integrado em Informática",
+        "abreviação": "TII",
+        "semestres": [2,4,6]
+    },
+    {
+        "nome": "Técninco Integrado em Edificações",
+        "abreviação": "TIE",
+        "semestres": [2,4,6]
+    },
+    {
+        "nome": "Técninco Integrado em Mecânica Industrial",
+        "abreviação": "TIMI",
+        "semestres": [2,4,6]
+    },
+     {
+        "nome": "Técninco Subsequente em Edificações",
+        "abreviação": "TSE",
+        "semestres": [1,2,3,4]
+    },
+    {
+        "nome": "Técninco Subsequente em Mecânica Industrial",
+        "abreviação": "TIMI",
+        "semestres": [1,2,3]
+    },
+    {
+        "nome": "Licenciatura em Música",
+        "abreviação": "LM",
+        "semestres": [1,2,3,4,5,6,7,8]
+    },
+    {
+        "nome": "Licenciatura em Física",
+        "abreviação": "LF",
+        "semestres": [2,3,4,5,6,7,8]
+    }
+]
