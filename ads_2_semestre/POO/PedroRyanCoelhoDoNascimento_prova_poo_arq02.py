@@ -1,4 +1,4 @@
-from PedroRyanCoelhoDoNascimento_prova_poo_arq01 import Drone
+from ads_2_semestre.POO.PedroRyanCoelhoDoNascimento_prova_poo_arq01 import Drone
 import os
 
 drone = Drone()
@@ -20,7 +20,7 @@ while True:
     match opcao:
         case "1":
             try:
-                deslocamento_z = float(
+                deslocamento_z = int(
                     input("Informe o deslocamento vertical: ")
                 )
                 drone.voar(deslocamento_z)
@@ -30,11 +30,11 @@ while True:
 
         case "2":
             try:
-                deslocamento_x = float(
+                deslocamento_x = int(
                     input("Informe o deslocamento no eixo X: ")
                 )
 
-                deslocamento_y = float(
+                deslocamento_y = int(
                     input("Informe o deslocamento no eixo Y: ")
                 )
 

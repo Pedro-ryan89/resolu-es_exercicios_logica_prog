@@ -10,7 +10,7 @@ class Drone:
         return self.__altura
         
     
-    def voar(self,deslocamento_z: int):
+    def voar(self,deslocamento_z: float):
         if  not isinstance(deslocamento_z,(int,float)):
             raise TypeError("O deslocamento vertical deve ser um número!")
         
@@ -28,7 +28,7 @@ class Drone:
     def posicao_y(self):
         return self.__posicao_y
     
-    def mover(self,deslocamento_x:int,deslocamento_y:int):
+    def mover(self,deslocamento_x:float,deslocamento_y:float):
         if not isinstance(deslocamento_x,(int,float))  or not isinstance(deslocamento_y,(int,float)):
             raise TypeError("O deslocamento horizontal deve ser um número!")
             
