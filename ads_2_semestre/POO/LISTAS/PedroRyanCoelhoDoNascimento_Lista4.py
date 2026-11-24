@@ -81,7 +81,6 @@
 # ======================== Questão 3 ========================
 
 
-
 # class Contato:
 #     def __init__(self,nome: str,tell: str):
 #         self.__nome = nome
@@ -267,4 +266,278 @@
         
 # ======================== Questão 6 ========================
 
+# class Produto:
+#     def __init__(self,codigo: int,nome: str,preco: int,quantidade: int) -> None:
+#         self.codigo = codigo
+#         self.nome = nome
+#         self.preco = preco
+#         self.quantidade = quantidade
+        
+    
+#     def __str__(self) -> str:
+#         return(
+#             f"Produto: {self.nome} | codigo: {self.codigo} | quantidade: {self.quantidade} | preco: {self.preco}"
+#         )
 
+# class Estoque:
+#     def __init__(self) -> None:
+#         self.produtos: list[Produto] = []
+        
+        
+#     def adicionar_produto(self,produto: Produto):
+#         self.produtos.append(produto)
+        
+    
+#     def remover_produto(self,codigo: int):
+#         for cod in self.produtos:
+#             if cod.codigo == codigo:
+#                 self.produtos.remove(cod)
+#                 print(f"\nproduto {cod.nome} removido\n")
+#             else:
+#                 print("produto nao encontrado")
+#                 break
+            
+                        
+#     def listar_produtos(self):
+#         for indice,produto in enumerate(self.produtos, start=1):
+#             print(f"{indice}. {produto}")
+            
+
+# estoque = Estoque()
+
+# p1 = Produto(1, "Teclado", 100, 10)
+# p2 = Produto(2, "Mouse", 50, 20)
+
+# estoque.adicionar_produto(p1)
+# estoque.adicionar_produto(p2)
+
+# estoque.listar_produtos()
+# # estoque.remover_produto(1)
+# # estoque.listar_produtos()
+            
+# # ======================== Questão 7 ========================
+
+# import os
+
+# class Produto:
+#     def __init__(self, codigo: int, valor: float, descricao: str) -> None:
+#         self.__codigo = codigo
+#         self.__valor = valor
+#         self.__descricao = descricao
+
+#     @property
+#     def valor_produto(self) -> float:
+#         return self.__valor
+
+#     @property
+#     def codigo_produto(self) -> int:
+#         return self.__codigo
+
+#     @property
+#     def descricao(self) -> str:
+#         return self.__descricao
+    
+    
+#     def __str__(self) -> str:
+#         return (
+#             f"Código: {self.__codigo} | "
+#             f"Valor: R$ {self.__valor:.2f} | "
+#             f"Descrição: {self.__descricao}"
+#         )
+
+# class ItemPedido:
+#     def __init__(self, produto: Produto, quantidade: int) -> None:
+#         self.produto = produto
+#         self.quantidade = quantidade
+#         self.preco_unitario = produto.valor_produto
+        
+        
+#     @property
+#     def subtotal(self) -> float:
+#         return self.quantidade * self.preco_unitario
+
+#     def __str__(self) -> str:
+#         return (
+#             f"Produto: {self.produto.descricao}\n"
+#             f"Preço unitário: R$ {self.preco_unitario:.2f}\n"
+#             f"Quantidade: {self.quantidade}\n"
+#             f"Subtotal: R$ {self.subtotal:.2f}"
+#         )
+
+# class Pedido:
+#     def __init__(self) -> None:
+#         self.itens: list[ItemPedido] = []
+
+#     def adicionar_itens(self, item: ItemPedido) -> None:
+#         self.itens.append(item)
+
+#     def obter_total(self) -> float:
+#         total = 0.0
+
+#         for item in self.itens:
+#             total += item.subtotal
+#         return total
+
+#     def imprimir_pedido_completo(self) -> None:
+#         for item in self.itens:
+#             print(item)
+
+#         print(f"Total: R$ {self.obter_total():.2f}")
+
+
+# def listar_produtos(produtos: list[Produto]) -> None:
+#     if not produtos:
+#         print("Nenhum produto cadastrado.")
+#         return
+
+#     for produto in produtos:
+#         print(produto)
+        
+        
+# def adicionar_item_ao_pedido(produtos: list[Produto], pedido: Pedido) -> None:
+#     if not produtos:
+#         print("\nCadastre pelo menos um produto primeiro.")
+#     else:
+#         listar_produtos(produtos)
+
+#         try:
+#             codigo = int(input("\nCódigo do produto: "))
+#             produto_escolhido = buscar_produto(produtos, codigo)
+
+#             if produto_escolhido is None:
+#                 print("\nProduto não encontrado.")
+#             else:
+#                 quantidade = int(input("Quantidade: "))
+
+#                 if quantidade <= 0:
+#                     print("\nA quantidade deve ser maior que zero.")
+#                 else:
+#                     item = ItemPedido(produto_escolhido, quantidade)
+#                     pedido.adicionar_itens(item)
+#                     print("\nItem adicionado ao pedido!")
+
+#         except ValueError as error:
+#             print(f"\nErro: {error}")
+        
+# def buscar_produto(produtos: list[Produto],codigo:int) -> Produto | None:
+#     produto_escolhido = None
+
+#     for produto in produtos:
+#         if produto.codigo_produto == codigo:
+#             produto_escolhido = produto
+#             break
+        
+#     return produto_escolhido
+
+
+# def menu() -> None:
+#     produtos: list[Produto] = []
+#     pedido = Pedido()
+
+#     while True:
+#         os.system("cls" if os.name == "nt" else "clear")
+
+#         print("===== SISTEMA DE PEDIDOS =====")
+#         print("1 - Cadastrar produto")
+#         print("2 - Criar novo pedido")
+#         print("3 - Adicionar item ao pedido")
+#         print("4 - Imprimir pedido completo")
+#         print("5 - Listar produtos")
+#         print("6 - Sair")
+
+#         opcao = input("\nEscolha uma opção: ")
+
+#         match opcao:
+#             case "1":
+#                 try:
+#                     codigo = int(input("Código do produto: "))
+#                     descricao = input("Descrição: ")
+#                     valor = float(input("Preço: R$ ").replace(",", "."))
+
+#                     produto = Produto(codigo, valor, descricao)
+#                     produtos.append(produto)
+
+#                     print("\nProduto cadastrado com sucesso!")
+
+#                 except ValueError as error:
+#                     print(f"\nErro: {error}")
+
+#             case "2":
+#                 pedido = Pedido()
+#                 print("\nNovo pedido criado!")
+
+#             case "3":
+#                 if not produtos:
+#                     print("\nCadastre pelo menos um produto primeiro.")
+#                 else:
+#                     listar_produtos(produtos)
+#             case "4":
+#                 print("\n===== PEDIDO COMPLETO =====")
+
+#                 if not pedido.itens:
+#                     print("O pedido ainda não possui itens.")
+#                 else:
+#                     pedido.imprimir_pedido_completo()
+
+#             case "5":
+#                 print("\n===== PRODUTOS CADASTRADOS =====")
+#                 listar_produtos(produtos)
+
+#             case "6":
+#                 print("\nEncerrando o sistema...")
+#                 break
+
+#             case _:
+#                 print("\nOpção inválida!")
+
+#         input("\nPressione ENTER para continuar...")
+
+
+# menu()
+
+
+# ======================== Questão 8 ========================
+
+import random
+import os
+import time
+class Carro:
+    def __init__(self,nome) -> None:
+        self.nome = nome
+        self.posicao = 0
+        self.velocida = 0
+    
+    def acelerar(self):
+       self.velocidade = random.randint(1,5)
+       self.posicao += self.velocidade
+       
+       
+    def __str__(self) -> str:
+        return f"{self.nome}: {'#' * self.posicao}"
+    
+
+carros = [
+    Carro("Carro 1"),
+    Carro("Carro 2"),
+    Carro("Carro 3"),
+    Carro("Carro 4")
+]
+
+
+def iniciar_corrida(tamanho_pista: int):
+    while True:
+        os.system("cls" if os.name == "nt" else "clear")
+
+        for carro in carros:
+            carro.acelerar()
+            print(carro)
+
+            if carro.posicao >= tamanho_pista:
+                print(f"\nVencedor: {carro.nome}!")
+                return
+
+        time.sleep(0.5)
+            
+        
+    
+iniciar_corrida(100)

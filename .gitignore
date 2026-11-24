@@ -21,9 +21,14 @@ htmlcov/
 .DS_Store
 Thumbs.db
 .zed
+.venv
 
 
 # pastas
 livros_TI
 estudos
+C#
+
+#arquivos
 artigos_sites_fakenews.md
+fala_projeto_cyber.md
