@@ -1,27 +1,18 @@
 from socket import *
 
 porta_servidor = 12000
-socket_servidor = socket(AF_INET, SOCK_DGRAM)
-endereco_receptor = None
+socket_servidor = socket(AF_INET, SOCK_STREAM)
+socket_servidor.bind( ("",porta_servidor) )
+socket_servidor.listen(1)
 
-socket_servidor.bind(("", porta_servidor))
-
-print("Servidor pronto para receber")
-
-cliente_registrado = None
+print(f"Servidor ouvindo porta {porta_servidor}")
 
 while True:
-    mensagem, endereco_cliente = socket_servidor.recvfrom(2048)
-    mensagem = mensagem.decode()
+    socket_conexao, endereco_cliente = socket_servidor.accept()
 
-    if mensagem == "!REGISTRO":
-        cliente_registrado = endereco_cliente
-        print("Cliente registrado:", cliente_registrado)
+    print(f"Solicitação de conexão recebida de {endereco_cliente}")
 
-    elif mensagem == "!REGISTRO_RECEPTOR":
-        endereco_receptor = endereco_cliente
-        print("Receptor registrado:", endereco_receptor)
-
-    else:
-        if endereco_receptor is not None:
-            socket_servidor.sendto(mensagem.encode(),endereco_receptor)
+    mensagem = socket_conexao.recv(1024).decode()
+    resposta = mensagem.upper()
+    socket_conexao.send( resposta.encode() )
+    socket_conexao.close()

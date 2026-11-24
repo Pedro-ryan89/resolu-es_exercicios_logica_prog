@@ -5,446 +5,308 @@
 # ============================================================
 
 
-# ======================== Questão 3 ========================
-# Especialize uma classe Pessoa utilizando herança.
+
+# ======================== Questão 1 ========================
+# especialização de um classe Pessoa.
 # ============================================================
+
 
 # class Pessoa:
 #     def __init__(self, nome: str, idade: int) -> None:
 #         self.nome = nome
 #         self.idade = idade
-#
+    
 #     def apresentar_detalhes(self) -> str:
-#         return f"Nome: {self.nome} - idade: {self.idade}"
-#
-#
+#         return f"Nome: {self.nome} - Idade: {self.idade}"
+ 
 # class Aluno(Pessoa):
-#     def __init__(
-#         self, nome: str, idade: int, matricula: str
-#     ) -> None:
-#         super().__init__(nome, idade)
+#     def __init__(self,nome: str,idade: int,matricula: str) -> None:
+#         super().__init__(nome,idade)
 #         self.matricula = matricula
-#
+        
 #     def apresentar_detalhes(self) -> str:
-#         detalhes = super().apresentar_detalhes()
-#         return f"{detalhes} - Matrícula: {self.matricula}"
-#
-#
+#         return f"{super().apresentar_detalhes()} - Matricula: {self.matricula}"
+    
+
 # aluno = Aluno("Ana", 20, "2026001")
-# print(aluno.apresentar_detalhes())
+# print(aluno.apresentar_detalhes()) # Nome: Ana - idade: 20 - Matrícula: 2026001
 
 
-# ======================== Questão 4 ========================
-# Funcionários: herança e polimorfismo.
+# ======================== Questão 2 ========================
+# polimorfismo com funcionarios.
 # ============================================================
 
 # class Funcionario:
-#     def __init__(self, nome: str) -> None:
+#     def __init__(self,nome:str) -> None:
 #         self.nome = nome
-#
-#     def calcular_pagamento(self) -> float:
-#         # Salário mínimo adotado como valor fixo de referência.
-#         return 1621.00
-#
-#
+        
+#     def calcular_pagamento(self) -> int:
+#         return 1615
+
+
 # class FuncionarioHorista(Funcionario):
-#     def __init__(
-#         self, nome: str, horas: float, valor_hora: float
-#     ) -> None:
+#     def __init__(self,nome:str ,horas: int, valor_hora: int) -> None:
 #         super().__init__(nome)
 #         self.horas = horas
-#         self.valor_hora = valor_hora
-#
-#     def calcular_pagamento(self) -> float:
-#         return self.horas * self.valor_hora
-#
-#
+#         self.valor_hora= valor_hora
+    
+#     def calcular_pagamento(self) -> int:
+#         return  self.horas * self.valor_hora
+    
+    
 # class FuncionarioComissionado(Funcionario):
-#     def __init__(
-#         self, nome: str, comissao: float
-#     ) -> None:
+#     def __init__(self, nome: str,comissao:  int) -> None:
 #         super().__init__(nome)
 #         self.comissao = comissao
-#
-#     def calcular_pagamento(self) -> float:
-#         return super().calcular_pagamento() + self.comissao
-#
-#
-# def imprimir_pagamentos(funcionarios: list) -> None:
-#     for funcionario in funcionarios:
-#         pagamento = funcionario.calcular_pagamento()
-#         print(
-#             f"{funcionario.nome}: R$ {pagamento:.2f}"
-#         )
-#
-#
+        
+#     def calcular_pagamento(self) -> int:
+#         return (super().calcular_pagamento() + self.comissao)
+    
+    
 # funcionarios = [
-#     Funcionario("Carlos"),
-#     FuncionarioHorista("Ana", 100, 20.00),
-#     FuncionarioComissionado("Pedro", 500.00)
-# ]
-#
-# imprimir_pagamentos(funcionarios)
+#     FuncionarioHorista("chico dede",40,7),
+#     FuncionarioComissionado("pedro",900),
+#     FuncionarioHorista("matheus",40,15),
+#     Funcionario("sapao")
+# ]   
+    
+# def salario_funcionarios(funcionarios: list[Funcionario]):
+#     for funcionario in funcionarios:
+#         print (f"{funcionario.nome}: {funcionario.calcular_pagamento()}")
+        
+# salario_funcionarios(funcionarios)
 
-
-# ======================== Questão 5 ========================
-# Hierarquia de Pessoas.
+# ======================== Questão 3 ========================
+# Especialize uma classe Pessoa utilizando herança.
 # ============================================================
 
-# class Pessoa:
-#     def __init__(self, nome: str, cpf: str) -> None:
+# class Pessoa():
+#     def __init__(self,nome: str,cpf: str) -> None:
 #         self.nome = nome
 #         self.cpf = cpf
-#
-#
+
+#     def apresentar(self) -> str:
+#         return f"Nome: {self.nome} | CPF: {self.cpf}"
+    
 # class Servidor(Pessoa):
-#     def __init__(
-#         self, nome: str, cpf: str, codigo_siape: str
-#     ) -> None:
+#     def __init__(self, nome: str, cpf: str,siape: int) -> None:
 #         super().__init__(nome, cpf)
-#         self.codigo_siape = codigo_siape
-#
-#
+#         self.siape = siape
+        
+#     def apresentar(self) -> str:
+#         return f"{super().apresentar()} | Siape: {self.siape}"
+
 # class Professor(Servidor):
-#     def __init__(
-#         self,
-#         nome: str,
-#         cpf: str,
-#         codigo_siape: str,
-#         disciplinas: list
-#     ) -> None:
-#         super().__init__(nome, cpf, codigo_siape)
+#     def __init__(self, nome: str, cpf: str, siape: int,disciplinas: list[Disciplina]) -> None:
+#         super().__init__(nome, cpf, siape)
 #         self.disciplinas = disciplinas
-#
-#
+        
+#     def apresentar(self) -> str:
+#         return f"{super().apresentar()} | disciplinas: {self.disciplinas}"
+
 # class TAE(Servidor):
-#     def __init__(
-#         self,
-#         nome: str,
-#         cpf: str,
-#         codigo_siape: str,
-#         funcao: str
-#     ) -> None:
-#         super().__init__(nome, cpf, codigo_siape)
+#     def __init__(self, nome: str, cpf: str, siape: int,funcao: str) -> None:
+#         super().__init__(nome, cpf, siape)
 #         self.funcao = funcao
-#
-#
-# class Disciplina:
-#     def __init__(self, nome: str, ch: int) -> None:
-#         self.nome = nome
-#         self.ch = ch
-#
-#     def __str__(self) -> str:
-#         return f"{self.nome} - CH: {self.ch} horas"
-#
-#
+        
+#     def apresentar(self) -> str:
+#         return f"{super().apresentar()} | Funcao: {self.funcao}"
+    
 # class Aluno(Pessoa):
-#     def __init__(
-#         self,
-#         nome: str,
-#         cpf: str,
-#         matricula: str,
-#         curso: str,
-#         disciplinas: list
-#     ) -> None:
+#     def __init__(self, nome: str, cpf: str,matricula: int,curso: str,disciplinas: list[Disciplina]) -> None:
 #         super().__init__(nome, cpf)
 #         self.matricula = matricula
 #         self.curso = curso
 #         self.disciplinas = disciplinas
-#
-#
-# # Testes da hierarquia.
-# poo = Disciplina("Programação Orientada a Objetos", 80)
-# banco_dados = Disciplina("Banco de Dados", 60)
-#
-# professor = Professor(
-#     "Maria",
-#     "11111111111",
-#     "SIAPE001",
-#     [poo, banco_dados]
-# )
-#
-# servidor_tae = TAE(
-#     "João",
-#     "22222222222",
-#     "SIAPE002",
-#     "Técnico de Laboratório"
-# )
-#
-# aluno = Aluno(
-#     "Ana",
-#     "33333333333",
-#     "2026001",
-#     "Análise e Desenvolvimento de Sistemas",
-#     [poo, banco_dados]
-# )
-#
-# print(f"Professor: {professor.nome}")
-# print(f"SIAPE: {professor.codigo_siape}")
-# print("Disciplinas do professor:")
-# for disciplina in professor.disciplinas:
-#     print(disciplina)
-#
-# print(f"\nTAE: {servidor_tae.nome}")
-# print(f"Função: {servidor_tae.funcao}")
-#
-# print(f"\nAluno: {aluno.nome}")
-# print(f"Matrícula: {aluno.matricula}")
-# print(f"Curso: {aluno.curso}")
-# print("Disciplinas do aluno:")
-# for disciplina in aluno.disciplinas:
-#     print(disciplina)
+        
+#     def apresentar(self) -> str:
+#         return f"{super().apresentar()} | matricula: {self.matricula} | Curso: {self.curso} | Disciplinas: {self.disciplinas}"
+        
+        
+# class Disciplina():
+#     def __init__(self,nome: str,CH:int) -> None:
+#         self.nome = nome
+#         self.CH = CH
+        
+#     def __str__(self) -> str:
+#         return f"{self.nome} - {self.CH} horas"
+    
+#     def __repr__(self) -> str:
+#         return f"{self.nome} - {self.CH} horas"
 
 
-# ======================== Questão 6 ========================
-# Laptop herdando de Computer.
-# ============================================================
+# python = Disciplina("Python", 80)
+# poo = Disciplina("POO", 60)
+# redes = Disciplina("Redes", 80)
+  
+# pessoas = [
+#     Pessoa("Pedro", "123"),
+#     Servidor("Carlos", "456", 789),
+#     Professor("Ana", "111", 222, [python, poo]),
+#     TAE("Marcos", "333", 444, "Técnico de laboratório"),
+#     Aluno("João", "555", 666, "ADS", [poo, redes])
+# ]     
 
-# class Computer:
-#     def __init__(self, model: str, speed: int) -> None:
+# def apresentar(pessoas: list[Pessoa]):
+#     for indice,pessoa in enumerate(pessoas,start=1):
+#         print(f"{indice} - {pessoa.apresentar()}")
+
+# apresentar(pessoas)
+
+
+
+# ======================== Questão 4 ========================
+# Laptop e computador.
+# ===========================================================
+
+# class Computer():
+#     def __init__(self,model: str,speed: int) -> None:
 #         self.model = model
 #         self.speed = speed
-#
-#
 # class Laptop(Computer):
-#     def __init__(
-#         self, model: str, speed: int, weight: int
-#     ) -> None:
-#         super().__init__(model, speed)
+#     def __init__(self,model: str,speed: int,weight: int) -> None:
+#         super().__init__(model,speed)
 #         self.__weight = weight
-#
+        
 #     @property
-#     def weight(self) -> int:
+#     def weight(self):
 #         return self.__weight
-#
+    
 #     def __str__(self) -> str:
-#         return (
-#             f"{self.model}, {self.speed} MHz, "
-#             f"{self.weight} kg"
-#         )
-#
-#
-# laptop = Laptop("Notebook Pro", 1500, 2)
+#         return f"{self.model} , {self.speed} MHz , {self.weight} Kg"
+    
+# laptop = Laptop("Notebook Pro",1500,2)
 # print(laptop)
+    
 
 
-# ======================== Questão 7 ========================
-# Rectangle e Square.
-# ============================================================
+# ======================== Questão 5 ========================
+# retangulo.
+# ===========================================================
 
-# class Rectangle:
-#     def __init__(self, width: float, height: float) -> None:
-#         self.width = width
+# class Rectangle():
+#     def __init__(self,width: int,height: int) -> None:
+#         self.widht = width
 #         self.height = height
-#
-#     def area(self) -> float:
-#         return self.width * self.height
-#
+        
+#     def area(self) -> int:
+#         return self.height * self.widht
+    
+    
 #     def __str__(self) -> str:
-#         return (
-#             f"Retângulo: {self.width} x {self.height}, "
-#             f"área: {self.area()}"
-#         )
-#
-#
+#         return f"area: {self.area()}"
+        
 # class Square(Rectangle):
-#     def __init__(self, side: float) -> None:
+#     def __init__(self, side: int) -> None:
 #         super().__init__(side, side)
-#
-#     def __str__(self) -> str:
-#         return (
-#             f"Quadrado: lado {self.width}, "
-#             f"área: {self.area()}"
-#         )
-#
-#
-# rectangle = Rectangle(5, 3)
-# square = Square(4)
-#
+        
+        
+# rectangle = Rectangle(10, 5)
+# square = Square(5)
+
 # print(rectangle)
 # print(square)
 
-
-# ======================== Questão 8 ========================
+# ======================== Questão 6 ========================
 # Pagamentos com herança e polimorfismo.
-# ============================================================
+# ===========================================================
 
-# class Pagamento:
-#     def processar(self) -> None:
-#         raise NotImplementedError(
-#             "Método deve ser implementado"
-#         )
-#
-#
+# from abc import ABC, abstractmethod
+
+# class Pagamento(ABC):
+#     def __init__(self,valor:int,tipo:str) -> None:
+#         self.valor = valor
+#         self.tipo = tipo
+       
+#     @abstractmethod 
+#     def processar(self) -> str :
+#         pass
+
 # class PagamentoPix(Pagamento):
-#     def processar(self) -> None:
-#         print("Pagamento realizado via Pix!")
-#
-#
+#     def __init__(self, valor: int, tipo: str) -> None:
+#         super().__init__(valor, tipo)
+        
+#     def processar(self) -> str:
+#         return f"pagamento: {self.tipo}  | no valor de {self.valor} aceito"
+    
+
 # class PagamentoCartao(Pagamento):
-#     def processar(self) -> None:
-#         print("Pagamento realizado via cartão!")
-#
-#
-# pagamentos = [
-#     PagamentoPix(),
-#     PagamentoCartao(),
-#     PagamentoPix(),
-#     PagamentoCartao()
+#     def __init__(self, valor: int, tipo: str,parcelas: str) -> None:
+#         super().__init__(valor, tipo)
+#         self.parcelas = parcelas
+        
+#     def processar(self) -> str:
+#         return f"pagamento: {self.tipo}  | no valor de {self.valor} aceito | parcelado em {self.parcelas}"   
+    
+    
+    
+# carrinho = [
+#     PagamentoPix(80,"pix"),
+#     PagamentoCartao(80,"cartao","a vista")
 # ]
+
+# def processarpagamentos(carrinho: list[Pagamento]):
+#     for pagamento in carrinho:
+#         print(pagamento.processar())
+    
+# processarpagamentos(carrinho)
+    
+# ======================== Questão 7 ========================
 #
-# for pagamento in pagamentos:
-#     pagamento.processar()
+# ===========================================================
 
-
-# ======================== Questão 9 ========================
-# Cartões comemorativos.
-# ============================================================
-
-# class CartaoMensagem:
-#     def __init__(
-#         self, destinatario: str, remetente: str
-#     ) -> None:
+# from abc import ABC, abstractmethod
+# class CartaoMensagem(ABC):
+#     def __init__(self,destinatario: str,remetente: str) -> None:
 #         self.destinatario = destinatario
 #         self.remetente = remetente
-#
+    
+#     @abstractmethod
 #     def retornar_mensagem(self) -> str:
-#         raise NotImplementedError(
-#             "Método deve ser implementado"
-#         )
-#
-#
-# class CartaoNamorados(CartaoMensagem):
-#     def retornar_mensagem(self) -> str:
-#         return (
-#             f"Feliz Dia dos Namorados, {self.destinatario}! "
-#             f"Com amor, {self.remetente}."
-#         )
-#
-#
-# class CartaoNatal(CartaoMensagem):
+#         pass
+    
+# class DiaDosNamorados(CartaoMensagem):
+
 #     def retornar_mensagem(self) -> str:
 #         return (
-#             f"Feliz Natal, {self.destinatario}! "
-#             f"Boas festas! De: {self.remetente}."
+#             f"feliz dia dos namorados {self.destinatario}!, com carinho {self.remetente}"
 #         )
-#
-#
-# class CartaoAniversario(CartaoMensagem):
+    
+# class Natal(CartaoMensagem):
+        
 #     def retornar_mensagem(self) -> str:
 #         return (
-#             f"Feliz aniversário, {self.destinatario}! "
-#             f"Muitas felicidades! De: {self.remetente}."
+#             f"feliz Natal {self.destinatario}!, com carinho {self.remetente}"
 #         )
-#
-#
-# destinatario = input("Nome do destinatário: ")
-# remetente = input("Nome do remetente: ")
-#
+    
+# class Aniversario(CartaoMensagem):
+    
+#     def retornar_mensagem(self) -> str:
+#         return (
+#             f"feliz Aniversario {self.destinatario}!, com carinho {self.remetente}"
+#         )        
+
+# destinatario = input("nome destinatario: ")
+# remetente = input("nome remetente: ")
+
+
 # cartoes = [
-#     CartaoNamorados(destinatario, remetente),
-#     CartaoNatal(destinatario, remetente),
-#     CartaoAniversario(destinatario, remetente)
+#     DiaDosNamorados(destinatario,remetente),
+#     Natal(destinatario,remetente),
+#     Aniversario(destinatario,remetente),
 # ]
-#
-# for cartao in cartoes:
-#     print()
-#     print(cartao.retornar_mensagem())
+
+# def MostrarMensagens(cartoes: list[CartaoMensagem]):
+#     for mensagem in cartoes:
+#         print(mensagem.retornar_mensagem())
+        
+# MostrarMensagens(cartoes)
+
+# ======================== Questão 8 ========================
+# 
+# ===========================================================
 
 
-# ======================== Questão 10 ========================
-# Pedra, papel e tesoura.
-# ============================================================
 
-# import random
-#
-#
-# class Jogador:
-#     def __init__(self, nome: str) -> None:
-#         self.nome = nome
-#         self.escolha = None
-#
-#     def EscolherJogada(self) -> None:
-#         raise NotImplementedError(
-#             "Método deve ser implementado"
-#         )
-#
-#
-# class Humano(Jogador):
-#     def EscolherJogada(self) -> None:
-#         opcoes = ["pedra", "papel", "tesoura"]
-#
-#         while True:
-#             escolha = input(
-#                 "Escolha pedra, papel ou tesoura: "
-#             ).strip().lower()
-#
-#             if escolha in opcoes:
-#                 self.escolha = escolha
-#                 break
-#
-#             print("Opção inválida! Tente novamente.")
-#
-#
-# class Computador(Jogador):
-#     def EscolherJogada(self) -> None:
-#         self.escolha = random.choice(
-#             ["pedra", "papel", "tesoura"]
-#         )
-#
-#
-# class Jogo:
-#     def __init__(self) -> None:
-#         self.jogador1 = Humano("Jogador")
-#         self.jogador2 = Computador("Computador")
-#
-#         self.placar = {
-#             "Jogador": 0,
-#             "Computador": 0,
-#             "Empates": 0
-#         }
-#
-#     def DefineVencedor(self) -> None:
-#         escolha1 = self.jogador1.escolha
-#         escolha2 = self.jogador2.escolha
-#
-#         print(f"\nJogador escolheu: {escolha1}")
-#         print(f"Computador escolheu: {escolha2}")
-#
-#         if escolha1 == escolha2:
-#             print("Empate!")
-#             self.placar["Empates"] += 1
-#
-#         elif (
-#             (escolha1 == "pedra" and escolha2 == "tesoura")
-#             or (escolha1 == "papel" and escolha2 == "pedra")
-#             or (escolha1 == "tesoura" and escolha2 == "papel")
-#         ):
-#             print("Você venceu a rodada!")
-#             self.placar["Jogador"] += 1
-#
-#         else:
-#             print("O computador venceu a rodada!")
-#             self.placar["Computador"] += 1
-#
-#     def JogarPartida(self) -> None:
-#         while True:
-#             self.jogador1.EscolherJogada()
-#             self.jogador2.EscolherJogada()
-#
-#             self.DefineVencedor()
-#
-#             continuar = input(
-#                 "\nDeseja jogar novamente? (s/n): "
-#             ).strip().lower()
-#
-#             if continuar != "s":
-#                 break
-#
-#         print("\n--- PLACAR FINAL ---")
-#         for nome, pontos in self.placar.items():
-#             print(f"{nome}: {pontos}")
-#
-#
-# jogo = Jogo()
-# jogo.JogarPartida()
+
+

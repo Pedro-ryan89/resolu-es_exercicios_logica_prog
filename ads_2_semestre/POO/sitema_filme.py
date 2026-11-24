@@ -31,7 +31,6 @@ class Filme:
         return self.__genero
                   
             
-            
     def __str__(self) -> str:
         return f"titulo: {self.__titulo} | diretor: {self.__diretor} | ano: {self.__ano} | genero: {self.__genero}"
   
